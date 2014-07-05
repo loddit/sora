@@ -4,7 +4,21 @@
 
 <body>
   {{> loginButtons}}
+  {{> channels}}
+  {{> messages}}
 </body>
 
-<template name="hello">
+<template name="messages">
+  {{messagesCount}}
+  {{#each messages}}
+     {{body}}
+  {{/each}}
+</template>
+
+<template name="channels">
+  <ul>
+    {{#each channels}}
+      <li>#{{name}}</li>
+    {{/each}}
+  </ul>
 </template>
