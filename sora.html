@@ -1,3 +1,4 @@
+<template name="channelPage">
 <head>
   <title>sora</title>
 </head>
@@ -6,13 +7,27 @@
   {{> loginButtons}}
   {{> channels}}
   {{> messages}}
+  {{> messageForm}}
 </body>
+</template>
+
+<template name="messageForm">
+  <form>
+    <input type="text">
+  </form>
+</template>
 
 <template name="messages">
   {{messagesCount}}
-  {{#each messages}}
-     {{body}}
-  {{/each}}
+  <ul>
+    {{#each messages}}
+      {{> message}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="message">
+  <li>{{userName}}:{{body}}</li>
 </template>
 
 <template name="channels">

@@ -4,9 +4,8 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-autopublish
-insecure
 coffeescript
 less
 accounts-password
 accounts-ui
+iron-router
