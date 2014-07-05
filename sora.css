@@ -1,1 +1,26 @@
 /* CSS declarations go here */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {padding: 0}
+
+li {list-style: none}
+
+h4 {margin: 2em 0 0}
+
+#sidebar {
+  width: 20%;
+  background-color: #333;
+  height: 100vh;
+  padding: 3%;
+  box-sizing: border-box;
+  color: #eee;
+  float: left;
+}
+
+#main {
+  padding: 4%;
+  float: left;
+}

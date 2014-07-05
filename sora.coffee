@@ -37,13 +37,16 @@ if Meteor.isClient
     channels: -> Channels.find()
   }
 
+  Template.users.helpers {
+    users: -> Meteor.users.find()
+  }
+
   Template.messageForm.events {
     'submit form': (e) ->
       e.preventDefault()
       body = $(e.target).find('input').val()
       Messages.insert({body: body, userId: Meteor.user()._id, channelId: Session.get('currentChannelId')})
   }
-
 
 
 if Meteor.isServer

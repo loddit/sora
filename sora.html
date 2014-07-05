@@ -1,14 +1,13 @@
 <template name="channelPage">
-<head>
-  <title>sora</title>
-</head>
-
-<body>
-  {{> loginButtons}}
-  {{> channels}}
-  {{> messages}}
-  {{> messageForm}}
-</body>
+  <div id="sidebar">
+    {{> loginButtons}}
+    {{> channels}}
+    {{> users}}
+  </div>
+  <div id="main">
+    {{> messages}}
+    {{> messageForm}}
+  </div>
 </template>
 
 <template name="messageForm">
@@ -31,9 +30,19 @@
 </template>
 
 <template name="channels">
+  <h4>Channels</h4>
   <ul>
     {{#each channels}}
       <li>#{{name}}</li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="users">
+  <h4>Users</h4>
+  <ul>
+    {{#each users}}
+      <li>@{{username}}</li>
     {{/each}}
   </ul>
 </template>
