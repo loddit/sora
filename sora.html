@@ -1,11 +1,13 @@
 <template name="channelPage">
-  {{this.keys}}
   <div id="sidebar">
-    {{> loginButtons}}
+    <h1 id="logo">Sora</h1>
+    <small> a mini team chat toolset</small>
+    <br>
     {{> channels}}
     {{> users}}
   </div>
   <div id="main">
+    {{> loginButtons align="right"}}
     {{> messages}}
     {{> messageForm}}
   </div>
@@ -13,21 +15,31 @@
 
 <template name="messageForm">
   <form>
-    <input type="text">
+    <input type="text" id="messageInput">
+    <input type="submit">
   </form>
 </template>
 
 <template name="messages">
-  {{messagesCount}}
-  <ul>
-    {{#each messages}}
-      {{> message}}
-    {{/each}}
-  </ul>
+  <div id="mesages">
+    <ul>
+      {{#each messages}}
+        {{> message}}
+      {{/each}}
+    </ul>
+    {{messagesCount}}
+  </div>
 </template>
 
 <template name="message">
-  <li>{{userName}}:{{body}}</li>
+  <li>{{userName}}:
+    <small class="time">
+      {{createdAt}}
+    </small>
+    <blockquote>
+      {{body}}
+    </blockquote>
+  </li>
 </template>
 
 <template name="channels">

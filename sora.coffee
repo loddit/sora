@@ -30,6 +30,7 @@ if Meteor.isClient
 
   Template.message.helpers {
     userName: -> Meteor.users.findOne(@userId).username
+    createdAt: -> @created.toTimeString()
   }
 
   Template.channels.helpers {
@@ -48,8 +49,9 @@ if Meteor.isClient
   Template.messageForm.events {
     'submit form': (e) ->
       e.preventDefault()
-      body = $(e.target).find('input').val()
-      Messages.insert({body: body, userId: Meteor.user()._id, channelId: Template.channelPage.getCurrentChannelId()})
+      input = $(e.target).find('#messageInput')
+      Messages.insert({body: input.val(), userId: Meteor.user()._id, channelId: Template.channelPage.getCurrentChannelId()})
+      input.val('')
   }
 
   Deps.autorun ->
@@ -57,7 +59,9 @@ if Meteor.isClient
 
 if Meteor.isServer
   Messages.allow({
-    insert: (userId, doc) -> !!userId
+    insert: (userId, doc) ->
+      doc.created = new Date()
+      !!userId
   })
   Meteor.publish "messages", (channelId) ->
     Messages.find({channelId: channelId})
