@@ -1,8 +1,6 @@
-<template name="channelPage">
+<template name="dashboardPage">
   <div id="sidebar">
-    <h1 id="logo">Sora</h1>
-    <small> a mini team chat toolset</small>
-    <br>
+    {{> logo}}
     {{> channels}}
     {{> users}}
   </div>
@@ -10,6 +8,13 @@
     {{> loginButtons align="right"}}
     {{> messages}}
     {{> messageForm}}
+  </div>
+</template>
+
+<template name="logo">
+  <div>
+    <h1 id="logo">Sora</h1>
+    <small> a mini team chat toolset</small>
   </div>
 </template>
 
@@ -43,7 +48,7 @@
 </template>
 
 <template name="channels">
-  <h4>Channels</h4>
+  <h4>Channel</h4>
   <ul>
     {{#each channels}}
       {{> channel}}
@@ -58,10 +63,16 @@
 </template>
 
 <template name="users">
-  <h4>Users</h4>
+  <h4>Metion</h4>
   <ul>
     {{#each users}}
-      <li>@{{username}}</li>
+      {{> user}}
     {{/each}}
   </ul>
+</template>
+
+<template name="user">
+  <li class={{#if isCurrentMetion}}selected{{/if}}>
+    <a href="{{pathFor 'metionPage'}}">@{{username}}</a>
+  </li>
 </template>
