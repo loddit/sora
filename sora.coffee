@@ -24,13 +24,13 @@ if Meteor.isClient
   Template.channelPage.getCurrentChannelId = -> null
 
   Template.messages.helpers {
-    messages: (channelId) -> Messages.find()
+    messages: -> Messages.find()
     messagesCount: -> Messages.find().count()
   }
 
   Template.message.helpers {
     userName: -> Meteor.users.findOne(@userId).username
-    createdAt: -> @created.toTimeString()
+    createdAt: -> @created and @created.toTimeString()
   }
 
   Template.channels.helpers {
