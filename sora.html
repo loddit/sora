@@ -1,4 +1,5 @@
 <template name="channelPage">
+  {{this.keys}}
   <div id="sidebar">
     {{> loginButtons}}
     {{> channels}}
@@ -33,9 +34,15 @@
   <h4>Channels</h4>
   <ul>
     {{#each channels}}
-      <li>#{{name}}</li>
+      {{> channel}}
     {{/each}}
   </ul>
+</template>
+
+<template name="channel">
+  <li class={{#if isCurrentChannel}}selected{{/if}}>
+    <a href="{{pathFor 'channelPage'}}">#{{name}}</a>
+  </li>
 </template>
 
 <template name="users">

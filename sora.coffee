@@ -12,7 +12,7 @@ if Meteor.isClient
       path: '/channels/:name',
       data: ->
         currentChannel = Channels.findOne({name: @params.name})
-        Session.set('currentChannelId', currentChannel._id)
+        Template.channelPage.getCurrentChannelId = -> currentChannel._id
         messages = Messages.find(channelId: currentChannel._id)
         Meteor.subscribe('messages', currentChannel._id)
         {
@@ -20,9 +20,8 @@ if Meteor.isClient
           messages: messages
         }
 
-  Template.channelPage.helpers {
-    currentChannel: -> Channels.find Session.get('currentChannelId')
-  }
+
+  Template.channelPage.getCurrentChannelId = -> null
 
   Template.messages.helpers {
     messages: (channelId) -> Messages.find()
@@ -37,6 +36,11 @@ if Meteor.isClient
     channels: -> Channels.find()
   }
 
+  Template.channel.helpers {
+    isCurrentChannel: ->
+      this._id == Template.channelPage.getCurrentChannelId()
+  }
+
   Template.users.helpers {
     users: -> Meteor.users.find()
   }
@@ -45,9 +49,11 @@ if Meteor.isClient
     'submit form': (e) ->
       e.preventDefault()
       body = $(e.target).find('input').val()
-      Messages.insert({body: body, userId: Meteor.user()._id, channelId: Session.get('currentChannelId')})
+      Messages.insert({body: body, userId: Meteor.user()._id, channelId: Template.channelPage.getCurrentChannelId()})
   }
 
+  Deps.autorun ->
+    Template.channelPage.getCurrentChannelId()
 
 if Meteor.isServer
   Messages.allow({
