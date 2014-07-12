@@ -20,7 +20,7 @@
 
 <template name="messageForm">
   <form>
-    <input type="text" id="messageInput">
+    <input type="text" id="message-input">
     <input type="submit">
   </form>
 </template>
@@ -54,6 +54,17 @@
       {{> channel}}
     {{/each}}
   </ul>
+  {{> channelPannel}}
+</template>
+
+<template name="channelPannel">
+  <div id="channel-pannel">
+    <a href="#">Create new Channel</a>
+    <form>
+      <input type="text">
+      <button> Create </button>
+    </form>
+  </div>
 </template>
 
 <template name="channel">

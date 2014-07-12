@@ -35,7 +35,6 @@ if Meteor.isClient
           messages: messages
         }
 
-
   Template.dashboardPage.getCurrentChannelId = -> null
   Template.dashboardPage.getCurrentMetionId = -> null
 
@@ -54,24 +53,38 @@ if Meteor.isClient
     isCurrentChannel: ->
       this._id == Template.dashboardPage.getCurrentChannelId()
 
+  Template.channelPannel.events
+    "click a": (e) ->
+      e.preventDefault()
+      $(e.target).hide().parent().find("form").show()
+    "submit form": (e) ->
+      e.preventDefault()
+      $form = $(e.target)
+      $form.hide().parent().find("a").show()
+      $input = $form.find('input')
+      Channels.insert({name: $input.val()})
+      $input.val('')
+
+
   Template.user.helpers
     isCurrentMetion: ->
       this._id == Template.dashboardPage.getCurrentMetionId()
 
   Template.users.helpers
-    users: -> Meteor.users.find()
+    users: ->
+      Meteor.users.find({_id: {$ne: Meteor.userId()}})
 
   Template.messageForm.events
     'submit form': (e) ->
       e.preventDefault()
-      input = $(e.target).find('#messageInput')
+      $input = $(e.target).find('#message-input')
       currentChannelId = Template.dashboardPage.getCurrentChannelId()
       currentMetionId = Template.dashboardPage.getCurrentMetionId()
       if currentChannelId
-        Messages.insert({body: input.val(), userId: Meteor.user()._id, channelId: currentChannelId})
+        Messages.insert({body: $input.val(), userId: Meteor.user()._id, channelId: currentChannelId})
       if currentMetionId
-        Messages.insert({body: input.val(), userId: Meteor.user()._id, metionId: currentMetionId})
-      input.val('')
+        Messages.insert({body: $input.val(), userId: Meteor.user()._id, metionId: currentMetionId})
+      $input.val('')
 
   Deps.autorun ->
     Template.dashboardPage.getCurrentChannelId()
@@ -81,7 +94,14 @@ if Meteor.isServer
   Messages.allow
     insert: (userId, doc) ->
       doc.created = new Date()
-      !!userId
+      doc.userId = userId
+      !!userId and doc.body
+
+  Channels.allow
+    insert: (userId, doc) ->
+      doc.created = new Date()
+      doc.userId = userId
+      !!userId and doc.name
 
   Meteor.publish "channelMessages", (channelId) ->
     Messages.find({channelId: channelId})

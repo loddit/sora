@@ -51,6 +51,30 @@ blockquote {
   text-decoration: none;
 }
 
+#channel-pannel {
+  padding: 0.2em 1em;
+  color: #999;
+}
+
+#channel-pannel a{
+  color: #999;
+  text-decoration: none;
+}
+
+#channel-pannel form {
+  display: none;
+}
+
+#channel-pannel input{
+  width: 10em;
+  margin: 4px;
+  background-color: #999;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  line-height: 1.6em;
+  padding: 0 0.5em;
+}
+
 #main {
   width: 50%;
   padding: 2%;
@@ -64,7 +88,7 @@ blockquote {
 #messages {
 }
 
-#messageInput {
+#message-input {
   width: 70%;
   border: 1px solid #999;
   line-height: 1.5em;
