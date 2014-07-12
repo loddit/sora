@@ -70,6 +70,9 @@
 <template name="channel">
   <li class={{#if isCurrentChannel}}selected{{/if}}>
     <a href="{{pathFor 'channelPage'}}">#{{name}}</a>
+    {{#if isMyOwn}}
+      <a href="#" class="delete">x</a>
+    {{/if}}
   </li>
 </template>
 

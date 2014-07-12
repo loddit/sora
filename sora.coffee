@@ -52,6 +52,13 @@ if Meteor.isClient
   Template.channel.helpers
     isCurrentChannel: ->
       this._id == Template.dashboardPage.getCurrentChannelId()
+    isMyOwn: ->
+      this.userId == Meteor.userId()
+
+  Template.channel.events
+    "click .delete": ->
+      if confirm("delete this channel with all messages ?")
+        Channels.remove(@_id)
 
   Template.channelPannel.events
     "click a": (e) ->
@@ -64,7 +71,6 @@ if Meteor.isClient
       $input = $form.find('input')
       Channels.insert({name: $input.val()})
       $input.val('')
-
 
   Template.user.helpers
     isCurrentMetion: ->
@@ -102,6 +108,8 @@ if Meteor.isServer
       doc.created = new Date()
       doc.userId = userId
       !!userId and doc.name
+    remove: (userId, doc) ->
+      !!userId and doc.userId == userId
 
   Meteor.publish "channelMessages", (channelId) ->
     Messages.find({channelId: channelId})

@@ -51,6 +51,11 @@ blockquote {
   text-decoration: none;
 }
 
+#sidebar li a.delete {
+  float: right;
+  color: #777;
+}
+
 #channel-pannel {
   padding: 0.2em 1em;
   color: #999;
@@ -99,3 +104,4 @@ blockquote {
 .time {
   color: #ccc;
 }
+
