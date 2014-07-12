@@ -39,31 +39,29 @@ if Meteor.isClient
   Template.dashboardPage.getCurrentChannelId = -> null
   Template.dashboardPage.getCurrentMetionId = -> null
 
-  Template.messages.helpers {
+  Template.messages.helpers
     messages: -> Messages.find()
     messagesCount: -> Messages.find().count()
-  }
 
-  Template.message.helpers {
+  Template.message.helpers
     userName: -> Meteor.users.findOne(@userId).username
     createdAt: -> @created and @created.toTimeString()
-  }
 
-  Template.channels.helpers {
+  Template.channels.helpers
     channels: -> Channels.find()
-  }
 
-  Template.channel.isCurrentChannel = ->
-    this._id == Template.dashboardPage.getCurrentChannelId()
+  Template.channel.helpers
+    isCurrentChannel: ->
+      this._id == Template.dashboardPage.getCurrentChannelId()
 
-  Template.user.isCurrentMetion = ->
-    this._id == Template.dashboardPage.getCurrentMetionId()
+  Template.user.helpers
+    isCurrentMetion: ->
+      this._id == Template.dashboardPage.getCurrentMetionId()
 
-  Template.users.helpers {
+  Template.users.helpers
     users: -> Meteor.users.find()
-  }
 
-  Template.messageForm.events {
+  Template.messageForm.events
     'submit form': (e) ->
       e.preventDefault()
       input = $(e.target).find('#messageInput')
@@ -74,18 +72,16 @@ if Meteor.isClient
       if currentMetionId
         Messages.insert({body: input.val(), userId: Meteor.user()._id, metionId: currentMetionId})
       input.val('')
-  }
 
   Deps.autorun ->
     Template.dashboardPage.getCurrentChannelId()
     Template.dashboardPage.getCurrentMetionId()
 
 if Meteor.isServer
-  Messages.allow({
+  Messages.allow
     insert: (userId, doc) ->
       doc.created = new Date()
       !!userId
-  })
 
   Meteor.publish "channelMessages", (channelId) ->
     Messages.find({channelId: channelId})
