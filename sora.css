@@ -29,7 +29,9 @@ blockquote {
 }
 
 #sidebar {
-  width: 22%;
+  box-sizing: border-box;
+  border-right: 2px solid #666;
+  width: 256px;
   background-color: #333;
   height: 100vh;
   padding: 1% 0;
@@ -71,7 +73,7 @@ blockquote {
 }
 
 #channel-pannel input{
-  width: 10em;
+  width: 9em;
   margin: 4px;
   background-color: #999;
   border: 1px solid #ccc;
@@ -81,9 +83,9 @@ blockquote {
 }
 
 #main {
-  width: 50%;
-  padding: 2%;
-  margin-left: 22%;
+  min-width: 400px;
+  height: 100vh;
+  margin-left: 256px;
 }
 
 #login-buttons {
@@ -91,6 +93,23 @@ blockquote {
 }
 
 #messages {
+  position: fixed;
+  box-sizing: border-box;
+  width: 640px;
+  height: 90%;
+  padding: 20px;
+  overflow: auto;
+  bottom: 10%;
+}
+
+#message-form {
+  width: 640px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  height: 10%;
+  position: fixed;
+  background-color: #f0f0f0;
+  bottom: 0;
 }
 
 #message-input {

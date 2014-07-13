@@ -19,20 +19,19 @@
 </template>
 
 <template name="messageForm">
-  <form>
+  <form id="message-form">
     <input type="text" id="message-input">
     <input type="submit">
   </form>
 </template>
 
 <template name="messages">
-  <div id="mesages">
+  <div id="messages">
     <ul>
       {{#each messages}}
         {{> message}}
       {{/each}}
     </ul>
-    {{messagesCount}}
   </div>
 </template>
 

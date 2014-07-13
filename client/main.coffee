@@ -5,7 +5,6 @@ Template.dashboardPage.getCurrentMetionId = -> null
 
 Template.messages.helpers
   messages: -> Messages.find()
-  messagesCount: -> Messages.find().count()
 
 Template.message.helpers
   userName: -> Meteor.users.findOne(@userId).username
