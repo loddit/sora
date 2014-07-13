@@ -4,14 +4,22 @@ Template.dashboardPage.getCurrentChannelId = -> null
 Template.dashboardPage.getCurrentMetionId = -> null
 
 Template.messages.helpers
-  messages: -> Messages.find()
+  messages: ->
+    currentChannelId = Template.dashboardPage.getCurrentChannelId()
+    currentMetionId = Template.dashboardPage.getCurrentMetionId()
+    if currentChannelId
+      return Messages.find({channelId: currentChannelId})
+    if currentMetionId
+      return Messages.find({$or: [{userId: currentMetionId}, {metionId: currentMetionId}]})
+
 
 Template.message.helpers
   userName: -> Meteor.users.findOne(@userId).username
   createdAt: -> @created and @created.toTimeString()
 
 Template.channels.helpers
-  channels: -> Channels.find()
+  channels: ->
+    Channels.find()
 
 Template.channel.helpers
   isCurrentChannel: ->

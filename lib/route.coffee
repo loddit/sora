@@ -1,6 +1,9 @@
 Router.configure
   waitOn: ->
-    Meteor.subscribe('users') && Meteor.subscribe('channels')
+    Meteor.subscribe('users') &&
+    Meteor.subscribe('channels') &&
+    Meteor.subscribe('metionMessages') &&
+    Meteor.subscribe('channelMessages')
 Router.map ->
   @route 'welcome', {path: '/'}
   @route 'metionPage',
@@ -10,8 +13,6 @@ Router.map ->
       currentMetion = Meteor.users.findOne({username: @params.username})
       Template.dashboardPage.getCurrentMetionId = -> currentMetion._id
       Template.dashboardPage.getCurrentChannelId = -> null
-      messages = Messages.find({metionId: currentMetion._id, userId: Meteor.user()._id})
-      Meteor.subscribe('metionMessages', currentMetion._id)
       {
         currentMetion: currentMetion
         messages: messages
@@ -24,10 +25,8 @@ Router.map ->
       Template.dashboardPage.getCurrentChannelId = -> currentChannel._id
       Template.dashboardPage.getCurrentMetionId = -> null
       messages = Messages.find(channelId: currentChannel._id)
-      Meteor.subscribe('channelMessages', currentChannel._id)
       {
         currentChannel: currentChannel
-        messages: messages
       }
 
 
