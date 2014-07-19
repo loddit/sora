@@ -53,9 +53,13 @@ blockquote {
   text-decoration: none;
 }
 
-#sidebar li a.delete {
+#sidebar li a.channel-action {
   float: right;
   color: #777;
+}
+
+#sidebar li a.channel-action:hover {
+  color: #ccc;
 }
 
 #channel-pannel {
@@ -69,7 +73,6 @@ blockquote {
 }
 
 #channel-pannel form {
-  display: none;
 }
 
 #channel-pannel input{
@@ -123,4 +126,3 @@ blockquote {
 .time {
   color: #ccc;
 }
-

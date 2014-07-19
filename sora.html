@@ -49,7 +49,12 @@
 <template name="channels">
   <h4>Channel</h4>
   <ul>
-    {{#each channels}}
+    {{#each joinedChannels}}
+      {{> channel}}
+    {{/each}}
+  </ul>
+  <ul>
+    {{#each otherChannels}}
       {{> channel}}
     {{/each}}
   </ul>
@@ -70,7 +75,13 @@
   <li class={{#if isCurrentChannel}}selected{{/if}}>
     <a href="{{pathFor 'channelPage'}}">#{{name}}</a>
     {{#if isMyOwn}}
-      <a href="#" class="delete">x</a>
+      <a href="#" class="channel-action delete">x</a>
+    {{else}}
+      {{#if isJoined}}
+        <a href="#" class="channel-action leave">LEAVE</a>
+      {{else}}
+        <a href="#" class="channel-action join">JOIN</a>
+      {{/if}}
     {{/if}}
   </li>
 </template>

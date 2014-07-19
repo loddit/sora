@@ -18,19 +18,26 @@ Template.message.helpers
   createdAt: -> @created and @created.toTimeString()
 
 Template.channels.helpers
-  channels: ->
-    Channels.find()
+  joinedChannels: ->
+    if Meteor.user()
+      Channels.find({_id: {$in: Meteor.user().channelIds or []}})
+  otherChannels: ->
+    if Meteor.user()
+      Channels.find({_id: {$nin:Meteor.user().channelIds or []}})
 
 Template.channel.helpers
   isCurrentChannel: ->
     this._id == Template.dashboardPage.getCurrentChannelId()
   isMyOwn: ->
     this.userId == Meteor.userId()
+  isJoined: ->
+    this._id in (Meteor.user().channelIds or [])
 
 Template.channel.events
   "click .delete": ->
     if confirm("delete this channel with all messages ?")
       Channels.remove(@_id)
+  "click .join": ->
 
 Template.channelPannel.events
   "click a": (e) ->
