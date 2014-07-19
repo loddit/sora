@@ -22,6 +22,11 @@ blockquote {
   font-size: 1.2em;
 }
 
+a{
+  color: #999;
+  text-decoration: none;
+}
+
 #logo {
   color: #fafafa;
   margin: 0.5em 0.1em 0.5em 0.4em;
@@ -62,20 +67,23 @@ blockquote {
   color: #ccc;
 }
 
-#channel-pannel {
+#channel-list a.channel-action {
+  display: none;
+}
+
+#channel-manager {
+  display: none;
+}
+
+#channel-create {
   padding: 0.2em 1em;
   color: #999;
 }
 
-#channel-pannel a{
-  color: #999;
-  text-decoration: none;
+#channel-create form {
 }
 
-#channel-pannel form {
-}
-
-#channel-pannel input{
+#channel-create input{
   width: 9em;
   margin: 4px;
   background-color: #999;
@@ -83,6 +91,12 @@ blockquote {
   border-radius: 4px;
   line-height: 1.6em;
   padding: 0 0.5em;
+}
+
+#toggle-manager {
+  float: right;
+  font-weight: normal;
+  color: #666;
 }
 
 #main {

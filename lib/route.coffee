@@ -3,6 +3,7 @@ Router.configure
     Meteor.subscribe('users') &&
     Meteor.subscribe('channels') &&
     Meteor.subscribe('metionMessages') &&
+    Meteor.subscribe('memberships') &&
     Meteor.subscribe('channelMessages')
 Router.map ->
   @route 'welcome', {path: '/'}

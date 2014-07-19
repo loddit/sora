@@ -12,12 +12,25 @@
     remove: (userId, doc) ->
       !!userId and doc.userId == userId
 
+  Memberships.allow
+    insert: (userId, doc) ->
+      !!userId and doc.channelId and doc.userId == userId
+    remove: (userId, doc) ->
+      !!userId and doc.userId == userId
+
   Meteor.publish "channelMessages", () ->
     channelIds = Channels.find().map (c) -> c._id
-    Messages.find({channelId: {$in: channelIds}})
+    Messages.find
+      channelId:
+        $in: channelIds
 
   Meteor.publish "metionMessages", () ->
-    Messages.find({$or: [{userId: @userId}, {metionId: @userId}]})
+    Messages.find
+      $or: [{userId: @userId}, {metionId: @userId}]
+
+  Meteor.publish "memberships", () ->
+    Memberships.find
+      userId: @userId
 
   Meteor.publish "channels", () ->
     Channels.find()

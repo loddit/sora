@@ -20,10 +20,31 @@ Template.message.helpers
 Template.channels.helpers
   joinedChannels: ->
     if Meteor.user()
-      Channels.find({_id: {$in: Meteor.user().channelIds or []}})
-  otherChannels: ->
+      Channels.find
+        _id:
+          $in: Memberships.find().map (membership) ->
+            membership.channelId
+    else
+      []
+  unjoiedChannels: ->
     if Meteor.user()
-      Channels.find({_id: {$nin:Meteor.user().channelIds or []}})
+      Channels.find
+        _id:
+          $nin: Memberships.find().map (membership) ->
+            membership.channelId
+    else
+      Channels.find()
+
+Template.channels.events
+  "click #toggle-manager": (e) ->
+    $toggler = $(e.target)
+    if $toggler.text() == 'done'
+      $toggler.text 'manage'
+    else
+      $toggler.text 'done'
+
+    $('#channel-list').toggle()
+    $('#channel-manager').toggle()
 
 Template.channel.helpers
   isCurrentChannel: ->
@@ -31,18 +52,28 @@ Template.channel.helpers
   isMyOwn: ->
     this.userId == Meteor.userId()
   isJoined: ->
-    this._id in (Meteor.user().channelIds or [])
+    Memberships.findOne
+      channelId: this._id
 
 Template.channel.events
   "click .delete": ->
     if confirm("delete this channel with all messages ?")
       Channels.remove(@_id)
   "click .join": ->
+      Memberships.insert
+        userId: Meteor.user()._id
+        channelId: this._id
+  "click .leave": ->
+      membership =  Memberships.findOne
+          userId: Meteor.user()._id
+          channelId: this._id
+      Memberships.remove membership._id
 
-Template.channelPannel.events
-  "click a": (e) ->
-    e.preventDefault()
-    $(e.target).hide().parent().find("form").show()
+Template.channelManager.helpers
+  allChannels: ->
+    Channels.find()
+
+Template.channelManager.events
   "submit form": (e) ->
     e.preventDefault()
     $form = $(e.target)

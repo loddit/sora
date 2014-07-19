@@ -47,24 +47,29 @@
 </template>
 
 <template name="channels">
-  <h4>Channel</h4>
-  <ul>
-    {{#each joinedChannels}}
-      {{> channel}}
-    {{/each}}
-  </ul>
-  <ul>
-    {{#each otherChannels}}
-      {{> channel}}
-    {{/each}}
-  </ul>
-  {{> channelPannel}}
+  <h4>
+      Channel
+      <a href="#" id="toggle-manager">manage</a>
+  </h4>
+  <div id="channel-list">
+    <ul>
+      {{#each joinedChannels}}
+        {{> channel}}
+      {{/each}}
+    </ul>
+  </div>
+  {{> channelManager}}
 </template>
 
-<template name="channelPannel">
-  <div id="channel-pannel">
-    <a href="#">Create new Channel</a>
-    <form>
+<template name="channelManager">
+  <div id="channel-manager">
+    <ul>
+      {{#each allChannels}}
+        {{> channel}}
+      {{/each}}
+    </ul>
+    <form id="channel-create">
+      <span>Create new Channel</span>
       <input type="text">
       <button> Create </button>
     </form>
