@@ -39,3 +39,8 @@
     Meteor.users.find()
 
   Meteor.startup ->
+    Channels.find().observe
+      added: (doc) ->
+        Memberships.insert
+          userId: doc.userId
+          channelId: doc._id
