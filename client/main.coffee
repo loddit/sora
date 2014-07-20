@@ -31,6 +31,11 @@ Template.message.rendered = ->
         _id: @data._id
       , $push: {readBy: user._id}
 
+Template.messages.rendered = ->
+  $(window).resize ->
+    $("#messages").height(document.body.clientHeight - 94)
+  .trigger("resize")
+
 Template.channels.helpers
   joinedChannels: ->
     if Meteor.user()
@@ -135,3 +140,6 @@ Template.messageForm.events
 Deps.autorun ->
   Template.dashboardPage.getCurrentChannelId()
   Template.dashboardPage.getCurrentMetionId()
+
+Meteor.startup ->
+    

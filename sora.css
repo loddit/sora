@@ -32,19 +32,19 @@ a{
   position: fixed;
   width: 254px;
   bottom: 0;
-  background-color: #393939;
+  background-color: #363636;
 }
 
 #logo h1 {
   color: #fafafa;
-  margin: 0.4em 0.1em 0.4em 0.4em;
+  margin: 6px 0.1em 6px 0.4em;
   display: inline-block;
 }
 
 #status {
   padding: 11px;
   height: 32px;
-  background-color: #393939;
+  background-color: #363636;
 }
 
 #login-buttons {
@@ -76,6 +76,7 @@ a{
 
 #sidebar li.selected{
   background-color: #444;
+  font-weight: bold;
 }
 
 #sidebar li a {
@@ -150,17 +151,16 @@ a{
   position: fixed;
   box-sizing: border-box;
   width: 640px;
-  height: 90%;
   padding: 20px;
   overflow: auto;
-  bottom: 10%;
+  bottom: 54px;
 }
 
 #message-form {
   width: 640px;
   box-sizing: border-box;
   padding: 10px 20px;
-  height: 10%;
+  height: 54px;
   position: fixed;
   background-color: #f0f0f0;
   bottom: 0;
