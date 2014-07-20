@@ -14,6 +14,7 @@ li {list-style: none}
 h4 {
   margin: 2em 0 0;
   padding: 0 1em;
+  color: #fff;
 }
 
 blockquote {
@@ -54,7 +55,7 @@ a{
 }
 
 #sidebar li a {
-  color: #f6f6f6;
+  color: #eaeaea;
   text-decoration: none;
 }
 
@@ -109,6 +110,10 @@ a{
   float: right;
   font-weight: normal;
   color: #666;
+  background-color: #444;
+  font-size: 0.8em;
+  padding: 0 5px 2px;
+  border-radius: 4px;
 }
 
 #main {
