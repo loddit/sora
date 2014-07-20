@@ -29,9 +29,33 @@ a{
 }
 
 #logo {
+  position: fixed;
+  width: 254px;
+  bottom: 0;
+  background-color: #393939;
+}
+
+#logo h1 {
   color: #fafafa;
-  margin: 0.5em 0.1em 0.5em 0.4em;
+  margin: 0.4em 0.1em 0.4em 0.4em;
   display: inline-block;
+}
+
+#status {
+  padding: 11px;
+  height: 32px;
+  background-color: #393939;
+}
+
+#login-buttons {
+  float: right;
+}
+
+#login-dropdown-list {
+  width: 230px;
+}
+
+#login-buttons.login-buttons-dropdown-align-right #login-dropdown-list {
 }
 
 #sidebar {
@@ -40,7 +64,7 @@ a{
   width: 256px;
   background-color: #333;
   height: 100vh;
-  padding: 1% 0;
+  padding: 0;
   box-sizing: border-box;
   color: #eee;
   position: fixed;
@@ -122,10 +146,6 @@ a{
   margin-left: 256px;
 }
 
-#login-buttons {
-  float: right;
-}
-
 #messages {
   position: fixed;
   box-sizing: border-box;
@@ -156,4 +176,9 @@ a{
 
 .time {
   color: #ccc;
+}
+
+.gavatar {
+  width: 32px;
+  height: auto;
 }

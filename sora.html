@@ -1,19 +1,26 @@
 <template name="dashboardPage">
   <div id="sidebar">
-    {{> logo}}
+    {{> status}}
     {{> channels}}
     {{> users}}
+    {{> logo}}
   </div>
   <div id="main">
-    {{> loginButtons align="right"}}
     {{> messages}}
     {{> messageForm}}
   </div>
 </template>
 
+<template name="status">
+  <div id="status">
+    {{> loginButtons align="right"}}
+    <img src="{{avatarUrl}}" class="gavatar">
+  </div>
+</template>
+
 <template name="logo">
-  <div>
-    <h1 id="logo">Sora</h1>
+  <div id="logo">
+    <h1>Sora</h1>
     <small> happy chat for team</small>
   </div>
 </template>
