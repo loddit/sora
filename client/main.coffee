@@ -34,6 +34,9 @@ Template.message.rendered = ->
         _id: @data._id
       , $push: {readBy: user._id}
 
+  objDiv = document.getElementById("messages")
+  objDiv.scrollTop = objDiv.scrollHeight
+
 Template.messages.rendered = ->
   $(window).resize ->
     $("#messages").height(document.body.clientHeight - 54)
