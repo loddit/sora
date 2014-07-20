@@ -110,7 +110,6 @@ Template.channelManager.events
   "submit form": (e) ->
     e.preventDefault()
     $form = $(e.target)
-    $form.hide().parent().find("a").show()
     $input = $form.find('input')
     Channels.insert({name: $input.val()})
     $input.val('')

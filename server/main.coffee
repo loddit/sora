@@ -10,7 +10,7 @@
     insert: (userId, doc) ->
       doc.created = new Date()
       doc.userId = userId
-      !!userId and doc.name
+      !!userId and doc.name and !Channels.find({name:doc.name}).count()
     remove: (userId, doc) ->
       !!userId and doc.userId == userId
 

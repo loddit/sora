@@ -147,14 +147,14 @@ a{
 #messages {
   position: fixed;
   box-sizing: border-box;
-  width: 640px;
+  width: 600px;
   padding: 0;
   overflow: auto;
   bottom: 54px;
 }
 
 #message-form {
-  width: 640px;
+  width: 600px;
   box-sizing: border-box;
   padding: 8px 20px;
   height: 54px;
@@ -164,7 +164,7 @@ a{
 }
 
 #message-input {
-  width: 480px;
+  width: 450px;
   border: 1px solid #bbb;
   line-height: 1.5em;
   padding: 0.2em 0.5em;
