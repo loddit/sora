@@ -18,9 +18,9 @@ h4 {
 }
 
 blockquote {
-  margin: 0;
-  padding: 0.5em 1em;
-  font-size: 1.2em;
+  margin: 4px 0 4px 48px;
+  padding: 0;
+  font-size: 1.1em;
 }
 
 a{
@@ -151,7 +151,7 @@ a{
   position: fixed;
   box-sizing: border-box;
   width: 640px;
-  padding: 20px;
+  padding: 0;
   overflow: auto;
   bottom: 54px;
 }
@@ -159,7 +159,7 @@ a{
 #message-form {
   width: 640px;
   box-sizing: border-box;
-  padding: 10px 20px;
+  padding: 8px 20px;
   height: 54px;
   position: fixed;
   background-color: #f0f0f0;
@@ -167,18 +167,57 @@ a{
 }
 
 #message-input {
-  width: 70%;
-  border: 1px solid #999;
+  width: 480px;
+  border: 1px solid #bbb;
   line-height: 1.5em;
-  padding: 0.2em 1em;
-  border-radius: 0.5em;
+  padding: 0.2em 0.5em;
+  border-radius: 6px 0 0 6px;
+  font-size: 1.1em;
+}
+
+#message-submit {
+  border-radius: 0 6px 6px 0;
+  background-color: #333;
+  border: 1px solid #666;
+  color: #fff;
+  font-size: 1.2em;
+  padding: 4px 12px;
+  margin-left: -6px;
+  position: relative;
+  top: 1px;
+  cursor: pointer;
+}
+
+#message-submit:hover {
+  background-color: #444;
 }
 
 .time {
   color: #ccc;
+  font-weight: normal;
 }
 
 .gavatar {
   width: 32px;
   height: auto;
+  border-radius: 4px;
+}
+
+.message {
+  padding: 12px 16px;
+  border-bottom: 1px solid #fafafa;
+}
+
+.message:hover {
+  background-color: #fdfdfd;
+}
+.message .gavatar {
+  position: absolute;
+  margin: 4px;
+}
+
+.message .message-meta {
+  margin-left: 48px;
+  color: #666;
+  font-weight: bold;
 }

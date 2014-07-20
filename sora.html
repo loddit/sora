@@ -28,7 +28,7 @@
 <template name="messageForm">
   <form id="message-form">
     <input type="text" id="message-input">
-    <input type="submit">
+    <input type="submit" id="message-submit">
   </form>
 </template>
 
@@ -43,11 +43,15 @@
 </template>
 
 <template name="message">
-  <li>{{userName}}:
-    <small class="time">
-      {{createdAt}}
-    </small>
-    <blockquote>
+  <li class="message">
+    <img src="{{avatarUrl}}" class="gavatar">
+    <div class="message-meta">
+      {{userName}}
+      <small class="time">
+        {{createdAt}}
+      </small>
+    </div>
+    <blockquote class="message-body">
       {{body}}
     </blockquote>
   </li>

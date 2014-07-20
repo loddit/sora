@@ -20,6 +20,9 @@ Template.messages.helpers
 Template.message.helpers
   userName: -> Meteor.users.findOne(@userId).username
   createdAt: -> @created and @created.toTimeString()
+  avatarUrl: ->
+    user = Meteor.users.findOne(@userId)
+    Gravatar.imageUrl(user.emails[0].address)
 
 Template.message.rendered = ->
   message = Messages.findOne(@data._id)
@@ -33,7 +36,7 @@ Template.message.rendered = ->
 
 Template.messages.rendered = ->
   $(window).resize ->
-    $("#messages").height(document.body.clientHeight - 94)
+    $("#messages").height(document.body.clientHeight - 54)
   .trigger("resize")
 
 Template.channels.helpers
@@ -142,4 +145,3 @@ Deps.autorun ->
   Template.dashboardPage.getCurrentMetionId()
 
 Meteor.startup ->
-    
