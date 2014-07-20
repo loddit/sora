@@ -71,7 +71,19 @@ a{
   display: none;
 }
 
+#sidebar li span.unread-count {
+  float: right;
+  background: #b11;
+  font-size: 0.7em;
+  padding: 0px 6px;
+  border-radius: 4px;
+}
+
 #channel-manager {
+  display: none;
+}
+
+#channel-manager .unread-count{
   display: none;
 }
 

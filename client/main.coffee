@@ -10,12 +10,21 @@ Template.messages.helpers
     if currentChannelId
       return Messages.find({channelId: currentChannelId})
     if currentMetionId
-      return Messages.find({$or: [{userId: currentMetionId}, {metionId: currentMetionId}]})
+      return Messages.find({$or: [{userId: currentMetionId, metionId: Meteor.user()._id}, {userId: Meteor.user()._id, metionId: currentMetionId}]})
 
 
 Template.message.helpers
   userName: -> Meteor.users.findOne(@userId).username
   createdAt: -> @created and @created.toTimeString()
+
+Template.message.rendered = ->
+  message = Messages.findOne(@data._id)
+  user = Meteor.user()
+  message.readBy = [] unless message.readBy?
+  unless user._id in message.readBy
+    Messages.update
+      _id: @data._id
+    , $push: {readBy: user._id}
 
 Template.channels.helpers
   joinedChannels: ->
@@ -54,6 +63,13 @@ Template.channel.helpers
   isJoined: ->
     Memberships.findOne
       channelId: this._id
+  unreadCount: ->
+    Messages.find
+      channelId: this._id
+      readBy:
+        $not: Meteor.user()._id
+    .count()
+
 
 Template.channel.events
   "click .delete": ->
@@ -85,6 +101,13 @@ Template.channelManager.events
 Template.user.helpers
   isCurrentMetion: ->
     this._id == Template.dashboardPage.getCurrentMetionId()
+  unreadCount: ->
+    Messages.find
+      userId: this._id
+      metionId: Meteor.user()._id
+      readBy:
+        $not: Meteor.user()._id
+    .count()
 
 Template.users.helpers
   users: ->

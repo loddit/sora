@@ -3,6 +3,8 @@
       doc.created = new Date()
       doc.userId = userId
       !!userId and doc.body
+    update: (userId, doc) ->
+      !!userId
 
   Channels.allow
     insert: (userId, doc) ->

@@ -79,6 +79,11 @@
 <template name="channel">
   <li class={{#if isCurrentChannel}}selected{{/if}}>
     <a href="{{pathFor 'channelPage'}}">#{{name}}</a>
+    {{#if unreadCount}}
+      <span class="unread-count">
+        {{unreadCount}}
+      </span>
+    {{/if}}
     {{#if isMyOwn}}
       <a href="#" class="channel-action delete">x</a>
     {{else}}
@@ -103,5 +108,10 @@
 <template name="user">
   <li class={{#if isCurrentMetion}}selected{{/if}}>
     <a href="{{pathFor 'metionPage'}}">@{{username}}</a>
+    {{#if unreadCount}}
+      <span class="unread-count">
+        {{unreadCount}}
+      </span>
+    {{/if}}
   </li>
 </template>
