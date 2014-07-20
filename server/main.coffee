@@ -41,6 +41,8 @@
     Meteor.users.find()
 
   Meteor.startup ->
+    unless Channels.find().count()
+      Channels.insert({name: "default"})
     Channels.find().observe
       added: (doc) ->
         Memberships.insert

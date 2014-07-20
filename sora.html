@@ -63,6 +63,11 @@
       <a href="#" id="toggle-manager">manage</a>
   </h4>
   <div id="channel-list">
+    {{#if isNewUser}}
+      <div class="tip">
+        click [manage] to join some channels
+      </div>
+    {{/if}}
     <ul>
       {{#each joinedChannels}}
         {{> channel}}

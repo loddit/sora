@@ -40,6 +40,9 @@ Template.messages.rendered = ->
   .trigger("resize")
 
 Template.channels.helpers
+  isNewUser: ->
+    if Meteor.user()
+      !Memberships.find().count()
   joinedChannels: ->
     if Meteor.user()
       Channels.find

@@ -218,3 +218,8 @@ a{
   color: #666;
   font-weight: bold;
 }
+
+.tip {
+  margin: 5px 15px;
+  color: #aaa;
+}
