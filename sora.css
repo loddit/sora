@@ -47,15 +47,12 @@ a{
   background-color: #363636;
 }
 
-#login-buttons {
+#status #login-buttons {
   float: right;
 }
 
-#login-dropdown-list {
+#status #login-dropdown-list {
   width: 230px;
-}
-
-#login-buttons.login-buttons-dropdown-align-right #login-dropdown-list {
 }
 
 #sidebar {

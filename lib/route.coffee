@@ -6,7 +6,10 @@ Router.configure
     Meteor.subscribe('memberships') &&
     Meteor.subscribe('channelMessages')
 Router.map ->
-  @route 'welcome', {path: '/'}
+  @route 'welcome',
+    path: '/'
+    action: ->
+      Router.go '/channel/default'
   @route 'metionPage',
     path: '/metion/:username'
     template: 'dashboardPage'
@@ -29,5 +32,3 @@ Router.map ->
       {
         currentChannel: currentChannel
       }
-
-
