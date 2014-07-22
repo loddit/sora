@@ -123,7 +123,7 @@
 
 <template name="user">
   <li class={{#if isCurrentMetion}}selected{{/if}}>
-    <a href="{{pathFor 'metionPage'}}">@{{username}}</a>
+    <a href="{{pathFor 'metionPage'}}" class={{#unless status.online}}offline{{/unless}}>@{{username}}</a>
     {{#if unreadCount}}
       <span class="unread-count">
         {{unreadCount}}

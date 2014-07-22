@@ -86,6 +86,10 @@ a{
   text-decoration: none;
 }
 
+#sidebar li a.offline {
+  color: #666;
+}
+
 #sidebar li a.channel-action {
   float: right;
   color: #777;
