@@ -1,6 +1,7 @@
 {
   "packages": {
     "iron-router": {},
-    "gravatar": {}
+    "gravatar": {},
+    "user-status": {}
   }
 }
