@@ -30,6 +30,7 @@ Template.message.helpers
 Template.message.rendered = ->
   message = Messages.findOne(@data._id)
   user = Meteor.user()
+  @find('.message-body').innerHTML =  Emoji.convert(@data.body)
   if user
     message.readBy = [] unless message.readBy?
     unless user._id in message.readBy

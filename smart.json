@@ -2,6 +2,7 @@
   "packages": {
     "iron-router": {},
     "gravatar": {},
-    "user-status": {}
+    "user-status": {},
+    "emoji": {}
   }
 }

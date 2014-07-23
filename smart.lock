@@ -4,7 +4,8 @@
     "basePackages": {
       "iron-router": {},
       "gravatar": {},
-      "user-status": {}
+      "user-status": {},
+      "emoji": {}
     },
     "packages": {
       "iron-router": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/mizzao/meteor-user-status.git",
         "tag": "v0.6.0",
         "commit": "dba80d742522ac104f2155f1db852922e4249f96"
+      },
+      "emoji": {
+        "git": "https://github.com/AlarmingCow/meteor-emoji",
+        "tag": "v0.9.0",
+        "commit": "5643ed81291df39a8006b55a652646b9fd7fd05b"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
