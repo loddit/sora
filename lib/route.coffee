@@ -2,9 +2,9 @@ Router.configure
   waitOn: ->
     Meteor.subscribe('users') &&
     Meteor.subscribe('channels') &&
-    Meteor.subscribe('metionMessages') &&
     Meteor.subscribe('memberships') &&
-    Meteor.subscribe('channelMessages')
+    Meteor.subscribe('channelMessages') &&
+    Meteor.subscribe('metionMessages')
 Router.map ->
   @route 'welcome',
     path: '/'

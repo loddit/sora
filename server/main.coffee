@@ -28,7 +28,7 @@
 
   Meteor.publish "metionMessages", () ->
     Messages.find
-      $or: [{userId: @userId}, {metionId: @userId}]
+      $or: [{userId: @userId, metionId: {$exists: true}}, {metionId: @userId}]
 
   Meteor.publish "memberships", () ->
     Memberships.find

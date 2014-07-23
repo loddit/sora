@@ -13,9 +13,12 @@ Template.messages.helpers
     currentChannelId = Template.dashboardPage.getCurrentChannelId()
     currentMetionId = Template.dashboardPage.getCurrentMetionId()
     if currentChannelId
-      return Messages.find({channelId: currentChannelId})
+      return Messages.find
+        channelId: currentChannelId
     if currentMetionId
-      return Messages.find({$or: [{userId: currentMetionId, metionId: Meteor.user()._id}, {userId: Meteor.user()._id, metionId: currentMetionId}]})
+      return Messages.find
+        $or: [{userId: currentMetionId, metionId: Meteor.user()._id}, {userId: Meteor.user()._id, metionId: currentMetionId}]
+
 
 Template.message.helpers
   userName: -> Meteor.users.findOne(@userId).username
