@@ -9,6 +9,30 @@
     {{> messages}}
     {{> messageForm}}
   </div>
+  <div id="readme">
+    {{> readme}}
+  </div>
+</template>
+
+<template name="readme">
+<h2> Sora </h2>
+<p>
+  A <a href="http://slack.com">Slack</a> like chat app.
+  just provide basic features and design for only one team. (everyone is here)
+</p>
+
+<p>
+  You can deploy Sora as you own easily, clone sora`s code, and read meteor docs for details.
+</p>
+
+<p>
+  Powered and hosted by <a href="http://meteor.com/">Meteor</a> and open source at <a href="http://github.com/loddit/sora">Github</a>
+</p>
+
+<p>
+  Licensed under the Apache License, <a href="http://www.apache.org/licenses/LICENSE-2.0">Version 2.0</a>.
+</p>
+
 </template>
 
 <template name="status">
@@ -60,7 +84,9 @@
 <template name="channels">
   <h4>
       Channels
-      <a href="#" id="toggle-manager">manage</a>
+      {{#if currentUser}}
+        <a href="#" id="toggle-manager">manage</a>
+      {{/if}}
   </h4>
   <div id="channel-list">
     {{#if isNewUser}}

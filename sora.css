@@ -6,7 +6,7 @@ from { opacity: 0}
 body {
   margin: 0;
   padding: 0;
-  font-family: Ubuntu;
+  font-family: Ubuntu, sans-serif;
 }
 
 ul {
@@ -151,11 +151,12 @@ a{
   min-width: 400px;
   height: 100vh;
   margin-left: 256px;
+  background-color: #fff;
 }
 
 #messages {
   position: fixed;
-  box-sizing: border-box;
+  box-sizing: margin-box;
   width: 600px;
   padding: 0;
   overflow: auto;
@@ -165,7 +166,7 @@ a{
 #message-form {
   width: 600px;
   box-sizing: border-box;
-  padding: 8px 20px;
+  padding: 8px 0 8px 20px;
   height: 54px;
   position: fixed;
   background-color: #f0f0f0;
@@ -173,7 +174,7 @@ a{
 }
 
 #message-input {
-  width: 430px;
+  width: 460px;
   border: 1px solid #bbb;
   line-height: 25px;
   padding: 4px 2px;
@@ -196,6 +197,23 @@ a{
   background-color: #444;
 }
 
+#readme {
+  box-sizing: border-box;
+  position: fixed;
+  margin-left: 856px;
+  padding: 30px;
+  top: 0;
+  height: 100vh;
+  border-left: 1px solid #ccc;
+  color: #888;
+  font-size: 13px;
+  background-color: #ddd;
+}
+
+#readme a{
+  color: #aaa;
+}
+
 .time {
   color: #ccc;
   font-weight: normal;
@@ -209,7 +227,7 @@ a{
 
 .message {
   padding: 12px 16px;
-  border-bottom: 1px solid #fafafa;
+  border-bottom: 1px solid #f8f8f8;
   animation-duration: 1s;
   animation-name: fadein;
   animation-iteration-count: 1;
@@ -217,7 +235,7 @@ a{
 }
 
 .message:hover {
-  background-color: #fdfdfd;
+  background-color: #fbfbfb;
 }
 .message .gavatar {
   position: absolute;
