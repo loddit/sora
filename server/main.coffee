@@ -1,6 +1,6 @@
   Messages.allow
     insert: (userId, doc) ->
-      doc.created = new Date()
+      doc.created = new Date().getTime()
       doc.userId = userId
       !!userId and doc.body
     update: (userId, doc) ->
@@ -8,7 +8,7 @@
 
   Channels.allow
     insert: (userId, doc) ->
-      doc.created = new Date()
+      doc.created = new Date().getTime()
       doc.userId = userId
       !!userId and doc.name and !Channels.find({name:doc.name}).count()
     remove: (userId, doc) ->

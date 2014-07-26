@@ -24,7 +24,7 @@ Template.messages.helpers
 
 Template.message.helpers
   userName: -> Meteor.users.findOne(@userId).username
-  createdAt: -> @created and @created.toTimeString()
+  createdAt: -> @created and new Date(@created).toTimeString()
   avatarUrl: ->
     user = Meteor.users.findOne(@userId)
     Gravatar.imageUrl(user.emails[0].address)
@@ -32,7 +32,7 @@ Template.message.helpers
 Template.message.rendered = ->
   message = Messages.findOne(@data._id)
   user = Meteor.user()
-  @find('.message-body').innerHTML =  Emoji.convert(@data.body)
+  @find('.message-body').innerHTML = Emoji.convert(@data.body)
   if user
     message.readBy = [] unless message.readBy?
     unless user._id in message.readBy
