@@ -1,10 +1,15 @@
 Sora
 ====
-Sora is a [Slack](http://slack.com) like chat app, it just provide basic feature and design for only one team.
+
+Demo: http://sora.meteor.com
+
+Sora is a [Slack](http://slack.com) like chat app, just provide basic features and design for only one team. (everyone is here)
+
+You can deploy Sora as you own easily, clone sora`s code, and read meteor docs for details.
+
+[Emoji](http://www.emoji-cheat-sheet.com/) supported now.
 
 powered and hosted by [Meteor](http://meteor.com/) and open source at [Github](http://github.com/loddit/sora).
-
-you can deploy Sora as you own easily, read meteor docs for details.
 
 ----
 
