@@ -25,10 +25,12 @@
     Messages.find
       channelId:
         $in: channelIds
+    , $orderby: {created: 1}
 
   Meteor.publish "metionMessages", () ->
     Messages.find
       $or: [{userId: @userId, metionId: {$exists: true}}, {metionId: @userId}]
+    , $orderby: {created: 1}
 
   Meteor.publish "memberships", () ->
     Memberships.find
