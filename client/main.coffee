@@ -15,9 +15,11 @@ Template.messages.helpers
     if currentChannelId
       return Messages.find
         channelId: currentChannelId
+      , $orderby: {created: 1}
     if currentMetionId
       return Messages.find
         $or: [{userId: currentMetionId, metionId: Meteor.user()._id}, {userId: Meteor.user()._id, metionId: currentMetionId}]
+        $orderby: {created: 1}
 
 
 Template.message.helpers
